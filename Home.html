@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Don Bosco 2 Motor's</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #212121;
+            color: white;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #333;
+            padding: 20px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        .navbar a:hover {
+            color: #ffcc00; /* Ganti warna saat hover */
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo">Don Bosco 2 <span>Motor's</span></div>
+            <a href="Home.html">HOME</a></li>
+            <a href="NIW.html">NEW CARS</a></li>
+            <a href="UsedCar.html">USED CARS</a></li>
+            <a href="Specialreq.html">SPECIAL REQUEST</a></li> 
+    </div>
+
+</body>
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Slide</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .slider {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .slide img {
+            width: 100%;
+            height: auto;
+        }
+        .nav-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .nav-button {
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slider">
+    <div class="slides">
+        <div class="slide"><img src="banner1.png" alt="Slide 1"></div>
+        <div class="slide"><img src="banner2.jpg" alt="Slide 2"></div>
+        <div class="slide"><img src="banner3.jpg" alt="Slide 3"></div>
+        <div class="slide"><img src="banner4.jpg" alt="Slide 3"></div>
+        <div class="slide"><img src="banner5.jpg" alt="Slide 3"></div>
+    </div>
+    <div class="nav-buttons">
+        <button class="nav-button" onclick="prevSlide()">❮</button>
+        <button class="nav-button" onclick="nextSlide()">❯</button>
+    </div>
+</div>
+
+<script>
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        const slides = document.querySelector('.slides');
+        const totalSlides = document.querySelectorAll('.slide').length;
+        if (index >= totalSlides) {
+            currentSlide = 0;
+        } else if (index < 0) {
+            currentSlide = totalSlides - 1;
+        } else {
+            currentSlide = index;
+        }
+        slides.style.transform = 'translateX(' + (-currentSlide * 100) + '%)';
+    }
+
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+        showSlide(currentSlide - 1);
+    }
+
+    setInterval(nextSlide, 5000); // Ganti slide setiap 5 detik
+</script>
+
+</body>
+</html>

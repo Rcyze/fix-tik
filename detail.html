@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Produk</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Detail Produk</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Kembali</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="detail-produk"></div>
+    </main>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const produkId = params.get('produk');
+        const produkData = [
+            { id: '1', nama: 'Produk 1', harga: 100000, deskripsi: 'Deskripsi Produk 1' },
+            { id: '2', nama: 'Lamborghini Huracan Tecnica - ATPM', harga: 200000, deskripsi: '<div class="row"><div class="car-detail-title col-lg-12 col-12"><h2>Specifications</h2></div><div class="border-bottom mb-3 row"><div class="col-lg-6 col-6"><p>YEAR</p></div><div class="col-lg-6 col-6"><p class="d-flex">2023</p></div></div><div class="border-bottom mb-3 row"><div class="col-lg-6 col-6"><p>KM</p></div><div class="col-lg-6 col-6"><p class="d-flex">2,197</p></div></div><div class="border-bottom mb-3 row"><div class="col-lg-6 col-6"><p>ENGINE</p></div><div class="col-lg-6 col-6"><p class="d-flex">V10</p></div></div><div class="border-bottom mb-3 row"><div class="col-lg-6 col-6"><p>COLOR</p></div><div class="col-lg-6 col-6"><p class="d-flex">Yellow</p></div></div></div> <div><strong><strong>HARGA OFF THE ROAD<br></strong></strong> <div>&nbsp;</div> Year : 2023<br>Exterior : Yellow<br>Interior : Black Yellow<br>Mileage : 2197<br>&nbsp;</div> <div><strong>Performance</strong><br>Engine : 5.2-liter V10, naturally aspirated<br>Power : 640 horsepower (470 kW)<br>Torque : 565 Nm (417 lb-ft)<br>Transmission : 7-speed dual-clutch automatic<br>Layout : All-wheel drive</div> <div>&nbsp;</div> <div><strong>Acceleration &nbsp; &nbsp;<br></strong>0-100 Km/h : 3.0 seconds<br>Max Speed : 310 km/h (193 mph)</div>' }
+        ];
+
+        const produk = produkData.find(p => p.id === produkId);
+        if (produk) {
+            document.getElementById('detail-produk').innerHTML = `
+                <h2>${produk.nama}</h2>
+                <p>Harga: Rp ${produk.harga}</p>
+                <p>${produk.deskripsi}</p>
+                <button id="tambah-keranjang">Tambah ke Keranjang</button>
+            `;
+
+            document.getElementById('tambah-keranjang').addEventListener('click', function() {
+                localStorage.setItem(produk.nama, produk.harga);
+                alert(`${produk.nama} telah ditambahkan ke keranjang!`);
+            });
+        }
+    </script>
+</body>
+</html>
